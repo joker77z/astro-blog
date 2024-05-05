@@ -1,0 +1,19 @@
+---
+import BlogPost from "../../components/BlogPost.astro";
+import NavHeader from "../../components/posts/NavHeader.astro";
+import PostListHeader from "../../components/posts/PostListHeader.astro";
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import MainLayout from "../../layouts/MainLayout.astro";
+
+const allPosts = await Astro.glob("./posts/*.md");
+---
+
+<BaseLayout>
+  <MainLayout>
+    <NavHeader />
+    <PostListHeader title="노트" description="작은 생각들이 모여있는 곳" />
+    <ul>
+      {allPosts.map((post) => <BlogPost url={post.url} title={post.frontmatter.title} />)}
+    </ul>
+  </MainLayout>
+</BaseLayout>
