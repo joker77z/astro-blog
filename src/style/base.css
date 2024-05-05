@@ -1,0 +1,148 @@
+:root {
+  --heading-color: black;
+  --text-color: black;
+  --bg-color: white;
+  --b-color: black;
+  --link-color: black;
+  --link-icon-color: black;
+  --hover-color: black;
+
+  --border: #292929;
+  --content-width: 640px;
+}
+
+.dark {
+  --heading-color: white;
+  --text-color: #b0b0b0;
+  --bg-color: #141414;
+  --b-color: #ebebeb;
+  --link-color: #ebebeb;
+  --link-icon-color: #ebebeb;
+  --hover-color: white;
+}
+
+body {
+  width: 100vw;
+  color: var(--text-color);
+  background-color: var(--bg-color);
+
+  font-family: "Pretendard", Arial, Helvetica, sans-serif;
+}
+
+main {
+  max-width: var(--content-width);
+  margin: 128px auto 0;
+}
+
+h1 {
+  font-size: 1.5rem;
+
+  color: var(--heading-color);
+}
+
+h2 {
+  font-size: 1.5rem;
+
+  color: var(--heading-color);
+}
+
+p {
+  line-height: 1.75rem;
+}
+
+b,
+strong {
+  color: var(--b-color);
+}
+
+a {
+  color: var(--link-color);
+
+  text-decoration-color: var(--border);
+  text-underline-offset: 0.25rem;
+  text-decoration-thickness: 1px;
+
+  position: relative;
+
+  &:hover {
+    text-decoration: none;
+
+    color: var(--hover-color);
+
+    &::before {
+      position: absolute;
+      top: -0.125rem;
+      bottom: -0.125rem;
+      left: -0.125rem;
+      right: -0.125rem;
+      display: block;
+      content: "";
+      border-radius: 0.25rem;
+      background: #ffffff45;
+      opacity: 0.5;
+
+      animation-name: fadein;
+      animation-duration: 0.15s;
+    }
+  }
+}
+
+.external-link {
+  padding-right: 1.25rem;
+  margin-right: 0.25rem;
+
+  &:hover {
+    &::before {
+      position: absolute;
+      top: -0.125rem;
+      bottom: -0.125rem;
+      left: -0.125rem;
+      right: 0rem;
+      display: block;
+      content: "";
+      border-radius: 0.25rem;
+      background: #ffffff45;
+      opacity: 0.5;
+
+      animation-name: fadein;
+      animation-duration: 0.15s;
+    }
+  }
+
+  &::after {
+    position: absolute;
+    display: block;
+    right: 0;
+    bottom: 0;
+    content: "";
+    background-color: var(--link-icon-color);
+    mask-image: url('data:image/svg+xml;utf8,<svg color="%23464646" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M6 18L18 6m0 0H9m9 0v9"/></svg>');
+    background-size: cover;
+    background-position: center;
+
+    width: 1.25rem;
+    height: 1.25rem;
+  }
+}
+
+ul {
+  padding: 0;
+}
+
+li {
+  list-style: none;
+}
+
+@keyframes fadein {
+  0% {
+    opacity: 0;
+  }
+
+  75% {
+    opacity: 0.4;
+  }
+
+  100% {
+    opacity: 0.5;
+  }
+}
