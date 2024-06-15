@@ -1,4 +1,16 @@
 :root {
+  --gray-50: #efefef;
+  --gray-100: #cdcdcd;
+  --gray-200: #b5b5b5;
+  --gray-300: #939393;
+  --gray-400: #7e7e7e;
+  --gray-500: #5e5e5e;
+  --gray-600: #474747;
+  --gray-700: #313131;
+  --gray-800: #262626;
+  --gray-900: #1b1b1b;
+
+  /* white mode */
   --heading-color: black;
   --text-color: black;
   --bg-color: white;
