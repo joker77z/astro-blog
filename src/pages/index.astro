@@ -7,11 +7,6 @@ import MainLayout from "../layouts/MainLayout.astro";
 
 <BaseLayout>
   <MainLayout>
-    <div class="header-area">
-      <h1>박태준</h1>
-      <button id="themeChangeBtn" class="theme-change-btn">밤</button>
-    </div>
-
     <div data-animate data-animate-speed="slow">
       <div class="introduce-area">
         <p>
@@ -56,22 +51,6 @@ import MainLayout from "../layouts/MainLayout.astro";
 </BaseLayout>
 
 <style>
-  .theme-change-btn.dark {
-    background: darkgray;
-    border: none;
-    border-radius: 0.25em;
-  }
-
-  .theme-change-btn {
-    background: rgb(255, 187, 118);
-    border: none;
-    border-radius: 0.25em;
-
-    &:hover {
-      cursor: pointer;
-    }
-  }
-
   .introduce-area {
     margin-top: 40px;
   }

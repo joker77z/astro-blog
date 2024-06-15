@@ -1,4 +1,43 @@
+---
+// import MoonSVG from "/public/images/moon.svg";
+
+import MoonSVG from "../assets/Moon";
+import ThemeIconButton from '../components/ThemeIconButton'
+
+---
+
 <main>
+  <div class="title-area">
+    <h1>박태준</h1>
+    
+      <ThemeIconButton client:only="react" />
+      <!-- <MoonSVG /> -->
+    </button>
+  </div>
   <slot />
 </main>
 
+<!-- script -->
+<script>
+  
+</script>
+
+<!-- style -->
+<style>
+  .button-wrapper {
+    color: red;
+  }
+  .moon-icon {
+    fill: red;
+  }
+
+  .title-area {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    height: 40px;
+  }
+
+  
+</style>

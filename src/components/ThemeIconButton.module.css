@@ -1,0 +1,37 @@
+.theme-change-btn {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+
+  background: none;
+  border: none;
+  color: var(--gray-600);
+  border-radius: 0.25em;
+
+  width: 40px;
+  height: 40px;
+
+  cursor: pointer;
+
+  transition: background-color 0.2s ease-in, border-color 0.2s ease-in, color 0.2s ease-in;
+
+  &:hover {
+    background: var(--gray-800);
+    border: 1px solid var(--gray-600);
+
+    color: var(--gray-50);
+  }
+}
+
+.theme-change-btn.dark {
+  border-radius: 0.25em;
+
+  &:hover {
+    /* background: var(--gray-800); */
+    border: 1px solid var(--gray-600);
+
+    color: var(--gray-50);
+    fill: var(--gray-50);
+  }
+}

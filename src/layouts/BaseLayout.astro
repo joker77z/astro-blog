@@ -1,6 +1,5 @@
 ---
 import { ViewTransitions } from "astro:transitions";
-import ThemeHeaderScript from "../script/ThemeHeaderScript.astro";
 import "../style/globalStyle.css";
 
 const { pageTitle } = Astro.props;
@@ -16,7 +15,13 @@ const { pageTitle } = Astro.props;
     <title>{pageTitle}</title>
     <style></style>
     <ViewTransitions />
-    <ThemeHeaderScript client:load />
+    <script is:inline>
+      const theme = localStorage.getItem("theme");
+
+      if (theme === "dark" || (!theme && window.matchMedia("(prefers-color-scheme: dark)").matches)) {
+        document.documentElement.classList.add("dark");
+      }
+    </script>
   </head>
   <body>
     <slot />
