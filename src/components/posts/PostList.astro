@@ -1,0 +1,116 @@
+---
+import type { PostData } from "../../types/post";
+import BlogPostLink from "./BlogPostLink.astro";
+
+const { allPosts } = Astro.props;
+
+/**
+ * 1. reduce로 아래와 같은 구조를 만들자.
+ * {
+ *  [2024]: [post1, post2],
+ *  [2023]: [post3]
+ * }
+ *
+ * 2. 렌더링 할 때
+ * 이 객체의 키들을 뽑아서 배열로 만들고
+ * 위에서 만든 객체의 post[key].map 이런 식으로 post를 순회한다.
+ */
+
+const postByYear = allPosts.reduce((acc: Record<number, PostData[]>, post: PostData) => {
+  const currentYear = new Date(post.frontmatter.pubDate).getFullYear();
+
+  if (!acc[currentYear]) {
+    acc[currentYear] = [];
+  }
+  acc[currentYear].push(post);
+
+  return acc;
+}, {});
+
+
+const sortedYears = Object.keys(postByYear).sort((a, b) => b - a);
+
+---
+
+<section>
+  {
+    sortedYears.map((year) => (
+      <div class="year-wrapper">
+        <h2>{year}</h2>
+        <ul>
+          {postByYear[year].map((post: PostData) => (
+            <BlogPostLink
+              url={post.url}
+              title={post.frontmatter.title}
+              date={`${String(new Date(post.frontmatter.pubDate).getMonth()).padStart(
+                2,
+                "0"
+              )}.${String(new Date(post.frontmatter.pubDate).getDate())
+                .padStart(2, "0")}`}}
+            >
+              {post.frontmatter.title}
+            </BlogPostLink>
+          ))}
+        </ul>
+      </div>
+    ))
+  }
+</section>
+
+<style>
+  section {
+    transition-property: opacity;
+    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+    transition-duration: 0.35s;
+
+    &:hover {
+      a {
+        opacity: 0.4;
+      }
+    }
+  }
+
+  .year-wrapper {
+    position: relative;
+    border-top: 1px solid gray;
+
+    &:hover {
+      h2::before {
+        position: absolute;
+        top: -0.125rem;
+        bottom: -0.125rem;
+        left: -0.125rem;
+        right: 0rem;
+        display: block;
+        content: "";
+        border-radius: 0.25rem;
+        background: #ffffff45;
+        opacity: 0.5;
+
+        animation-name: fadein;
+        animation-duration: 0.15s;
+      }
+    }
+  }
+
+  .year-wrapper:last-child {
+    border-bottom: 1px solid gray;
+  }
+
+  h2 {
+    position: absolute;
+    font-size: 1rem;
+
+    top: 18px;
+
+    color: var(--text-color);
+
+    z-index: -10;
+  }
+
+  ul {
+    display: flex;
+    flex-flow: column;
+    gap: 0.5rem;
+  }
+</style>

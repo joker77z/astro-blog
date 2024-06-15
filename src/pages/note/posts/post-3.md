@@ -1,12 +1,12 @@
 ---
 layout: ../../../layouts/MarkdownPostLayout.astro
-title: Javascript에 대한 기술을 정리한 포스팅
+title: 2024년 회고
 author: Astro Learner
 description: "After learning some Astro, I couldn't stop!"
 image:
   url: "https://docs.astro.build/assets/arc.webp"
   alt: "Thumbnail of Astro arcs."
-pubDate: 2022-07-08
+pubDate: 2021-07-08
 tags: ["astro", "blogging", "learning in public", "successes"]
 ---
 

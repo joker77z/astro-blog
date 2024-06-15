@@ -1,0 +1,89 @@
+---
+const { url, title, date } = Astro.props;
+---
+
+<li>
+  <a href={url}
+    ><div class="title-date-wrapper"><span class="title">{title}</span><span class="date">{date}</span></div></a
+  >
+</li>
+
+<style>
+  li {
+    list-style: none;
+  }
+
+  li:hover {
+    font-weight: bold;
+  }
+
+  a {
+    text-decoration: none;
+
+    padding-right: 1.25rem;
+    margin-right: 0.25rem;
+
+    transition-property: opacity;
+    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+    transition-duration: 0.35s;
+
+    display: block;
+
+    &:hover {
+      opacity: 1 !important;
+
+      .title {
+        position: relative;
+        color: white;
+
+        &::before {
+          position: absolute;
+          top: -0.125rem;
+          bottom: -0.125rem;
+          left: -0.125rem;
+          right: 0rem;
+          display: block;
+          content: "";
+          border-radius: 0.25rem;
+          background: #ffffff45;
+          opacity: 0.5;
+
+          animation-name: fadein;
+          animation-duration: 0.15s;
+        }
+      }
+
+      .date {
+        position: relative;
+        color: white;
+
+        &::before {
+          position: absolute;
+          top: -0.125rem;
+          bottom: -0.125rem;
+          left: -0.125rem;
+          right: 0rem;
+          display: block;
+          content: "";
+          border-radius: 0.25rem;
+          background: #ffffff45;
+          opacity: 0.5;
+
+          animation-name: fadein;
+          animation-duration: 0.15s;
+        }
+      }
+    }
+  }
+
+  .title-date-wrapper {
+    margin-left: 15%;
+
+    display: flex;
+    justify-content: space-between;
+    flex: 1 1 0;
+
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+  }
+</style>

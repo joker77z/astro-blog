@@ -1,6 +1,7 @@
 ---
 import BaseLayout from "./BaseLayout.astro";
 import MainLayout from "./MainLayout.astro";
+import PostLayout from "./PostLayout.astro";
 
 interface Props {
   frontmatter: {
@@ -16,18 +17,20 @@ const { frontmatter } = Astro.props as Props;
 
 <BaseLayout pageTitle={frontmatter.title}>
   <MainLayout>
-    <p>Published on: {frontmatter.pubDate.toString().slice(0, 10)}</p>
-    <p>Written by {frontmatter.author}</p>
-    <p>Tags:</p>
-    <ul>
-      {
-        frontmatter.tags.map((tag) => (
-          <li>
-            <a href={`/tags/${tag}`}>{tag}</a>
-          </li>
-        ))
-      }
-    </ul>
-    <slot />
+    <PostLayout>
+      <p>Published on: {frontmatter.pubDate.toString().slice(0, 10)}</p>
+      <p>Written by {frontmatter.author}</p>
+      <p>Tags:</p>
+      <ul>
+        {
+          frontmatter.tags.map((tag) => (
+            <li>
+              <a href={`/tags/${tag}`}>{tag}</a>
+            </li>
+          ))
+        }
+      </ul>
+      <slot />
+    </PostLayout>
   </MainLayout>
 </BaseLayout>

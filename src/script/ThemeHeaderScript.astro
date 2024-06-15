@@ -1,7 +1,32 @@
 <script>
-  const theme = localStorage.getItem("theme");
+  document.addEventListener("astro:page-load", () => {
+    const theme = localStorage.getItem("theme");
+    const isDarkMode = theme === "dark" || (!theme && window.matchMedia("(prefers-color-scheme: dark)").matches);
 
-  if (theme === "dark" || (!theme && window.matchMedia("(prefers-color-scheme: dark)").matches)) {
-    document.body.classList.add("dark");
-  }
+    const $themeChangeBtn = document.querySelector("#themeChangeBtn");
+
+    if (isDarkMode) {
+      document.body.classList.add("dark");
+    }
+    if (isDarkMode) {
+      $themeChangeBtn!.innerHTML = "밤";
+      $themeChangeBtn?.classList.add("dark");
+    } else {
+      $themeChangeBtn!.innerHTML = "낮";
+      $themeChangeBtn?.classList.remove("dark");
+    }
+
+    $themeChangeBtn?.addEventListener("click", () => {
+      // dark가 없으면 추가하고 true, dark가 이미 있으면 제거하고 false
+      const isDark = document.body.classList.toggle("dark");
+      localStorage.setItem("theme", isDark ? "dark" : "light");
+      if (isDark) {
+        $themeChangeBtn!.innerHTML = "밤";
+        $themeChangeBtn?.classList.add("dark");
+      } else {
+        $themeChangeBtn!.innerHTML = "낮";
+        $themeChangeBtn?.classList.remove("dark");
+      }
+    });
+  });
 </script>
