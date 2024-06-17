@@ -13,7 +13,7 @@
   /* white mode */
   --heading-color: black;
   --text-color: black;
-  --bg-color: white;
+  --bg-color: var(--gray-50);
   --b-color: black;
   --external-link-color: black;
   --external-link-icon-color: black;
@@ -30,7 +30,7 @@
   --b-color: var(--gray-50);
   --external-link-color: var(--gray-50);
   --external-link-icon-color: #ebebeb;
-  --hover-color: white;
+  --hover-color: var(--gray-50);
 }
 
 body {
@@ -38,7 +38,7 @@ body {
   color: var(--text-color);
   background-color: var(--bg-color);
 
-  font-family: "Arita-buri", "ChosunSm", "Pretendard", Arial, Helvetica, sans-serif;
+  font-family: "Pretendard", "Arita-buri", "ChosunSm", Arial, Helvetica, sans-serif;
 }
 
 main {
@@ -76,6 +76,10 @@ a {
   }
 }
 
+ul {
+  margin: 0;
+}
+
 .link {
   color: var(--external-link-color);
 
@@ -111,25 +115,26 @@ a {
 /* 외부 사이트로 이동합니다 */
 .external-link {
   padding-right: 1.25rem;
-  margin-right: 0.25rem;
 
   position: relative;
 
   &:hover {
     &::before {
       position: absolute;
-      top: -0.125rem;
-      bottom: -0.125rem;
-      left: -0.125rem;
-      right: 0rem;
+      top: -0.25rem;
+      bottom: -0.25rem;
+
+      left: -0.25rem;
+      right: 0;
+
       display: block;
       content: "";
       border-radius: 0.25rem;
-      background: #ffffff45;
-      opacity: 0.5;
+      background: var(--gray-700);
+      z-index: -1;
 
       animation-name: fadein;
-      animation-duration: 0.15s;
+      animation-duration: 0.35s;
     }
   }
 
@@ -141,7 +146,7 @@ a {
     content: "";
     background-image: url("/src/assets/external_link.svg");
     background-size: 80%;
-    background-position: bottom left;
+    background-position: left center;
     background-repeat: no-repeat;
 
     width: 1.25rem;
@@ -162,12 +167,8 @@ li {
     opacity: 0;
   }
 
-  75% {
-    opacity: 0.4;
-  }
-
   100% {
-    opacity: 0.5;
+    opacity: 1;
   }
 }
 

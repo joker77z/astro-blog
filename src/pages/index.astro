@@ -9,41 +9,38 @@ import MainLayout from "../layouts/MainLayout.astro";
   <MainLayout>
     <div data-animate data-animate-speed="slow">
       <div class="introduce-area">
-        <p>
-          <b>개발적으로 새로운 기술</b>을 배우는 것도 좋아하지만, 고객의 <b>사용자 경험</b>을 우선시 합니다. <br />
-          <b>개인적으로는 공유하며 함께 성장하고 기뻐하는 것</b>을 좋아하고, 비효율적인 테스크를 <b
-            >효율적으로 만드는 것</b
-          >에 관심이 많습니다.
-        </p>
-        <p>
-          현재 <a class="external-link" href="https://midasit.notion.site/MIDAS-IN-a9fffb2e45fb4519bfb7ae69e032f1f9"
-            >마이다스인</a
-          >에서 인사담당자 및 200만 구직자가 사용하는 레거시 프로젝트들을 리뉴얼하는 작업을 하고 있습니다.
-        </p>
+        <div>
+          <p>
+            <b>개발적으로 새로운 기술</b>을 배우는 것도 좋아하지만, 고객의 <b>사용자 경험</b>을 우선시 합니다. <br />
+            <b>개인적으로는 공유하며 함께 성장하고 기뻐하는 것</b>을 좋아하고, 비효율적인 테스크를 <b
+              >효율적으로 만드는 것</b
+            >에 관심이 많습니다.
+          </p>
+          <p>
+            현재 <a class="external-link" href="https://midasit.notion.site/MIDAS-IN-a9fffb2e45fb4519bfb7ae69e032f1f9"
+              >마이다스인</a
+            >에서 인사담당자 및 200만 구직자가 사용하는 레거시 프로젝트들을 리뉴얼하는 작업을 하고 있습니다.
+          </p>
+        </div>
         <ul class="icon-list">
           <li>
             <a class="icon-link" href="https://www.github.com/joker77z"><Github /></a>
           </li>
-
-          <!-- <li></li>
-          <li></li>
-          <li></li>
-          <li></li> -->
         </ul>
       </div>
 
       <table class="page-area">
         <tr>
           <th><a class="menu-link external-link" href="/note">수첩</a></th>
-          <td><span class="menu-description">작은 메모, 작은 생각들</span></td>
+          <td><span class="menu-description">순간적인 생각을 기록하는 나의 수첩</span></td>
         </tr>
         <tr>
           <th><a class="menu-link external-link" href="">서재</a></th>
-          <td><span class="menu-description">고민의 흔적</span></td>
+          <td><span class="menu-description">깊이 있는 고민과 통찰의 공간</span></td>
         </tr>
         <tr>
           <th><a class="menu-link external-link" href="">도구</a></th>
-          <td><span class="menu-description">효율성을 올려주는 도구들</span></td>
+          <td><span class="menu-description">생산성을 높여주는 나의 도구들을 공유합니다</span></td>
         </tr>
       </table>
     </div>
@@ -52,7 +49,10 @@ import MainLayout from "../layouts/MainLayout.astro";
 
 <style>
   .introduce-area {
-    margin-top: 40px;
+    display: flex;
+    flex-flow: column;
+    gap: 20px;
+    margin-top: 24px;
   }
   .page-area {
     margin-top: 40px;
@@ -76,6 +76,7 @@ import MainLayout from "../layouts/MainLayout.astro";
   .icon-list {
     display: flex;
     flex-flow: row;
+    gap: 8px;
   }
   .icon-link {
     display: flex;
@@ -86,6 +87,16 @@ import MainLayout from "../layouts/MainLayout.astro";
 
     width: 20px;
     height: 20px;
+
+    color: var(--gray-500);
+
+    &:hover {
+      background: var(--gray-700);
+      border-radius: 4px;
+      color: var(--gray-50);
+
+      transition: all 0.25s ease-in;
+    }
   }
 
   th {
