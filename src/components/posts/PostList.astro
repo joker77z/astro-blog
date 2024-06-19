@@ -16,8 +16,8 @@ const { allPosts } = Astro.props;
  * 위에서 만든 객체의 post[key].map 이런 식으로 post를 순회한다.
  */
 
-const postByYear = allPosts.reduce((acc: Record<number, PostData[]>, post: PostData) => {
-  const currentYear = new Date(post.frontmatter.pubDate).getFullYear();
+const postByYear = allPosts.reduce((acc: Record<string, PostData[]>, post: PostData) => {
+  const currentYear = new Date(post.frontmatter.pubDate).getFullYear().toString();
 
   if (!acc[currentYear]) {
     acc[currentYear] = [];
@@ -28,7 +28,7 @@ const postByYear = allPosts.reduce((acc: Record<number, PostData[]>, post: PostD
 }, {});
 
 
-const sortedYears = Object.keys(postByYear).sort((a, b) => b - a);
+const sortedYears: string[] = Object.keys(postByYear).sort((a, b) => Number(b) - Number(a));
 
 ---
 
