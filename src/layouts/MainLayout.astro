@@ -2,28 +2,33 @@
 // import MoonSVG from "/public/images/moon.svg";
 
 import MoonSVG from "../assets/Moon";
-import ThemeIconButton from '../components/ThemeIconButton'
+import ThemeIconButton from "../components/ThemeIconButton";
 
+const { title, description } = Astro.props;
 ---
 
 <main>
   <div class="title-area">
-    <h1>박태준</h1>
-    
-      <ThemeIconButton client:only="react" />
-      <!-- <MoonSVG /> -->
-    </button>
+    <div>
+      <h1>{title}</h1>
+      <p>{description}</p>
+    </div>
+
+    <ThemeIconButton client:only="react" />
+    <!-- <MoonSVG /> -->
   </div>
   <slot />
 </main>
 
 <!-- script -->
-<script>
-  
-</script>
+<script></script>
 
 <!-- style -->
 <style>
+  h1 {
+    color: var(--gray-50);
+  }
+
   .button-wrapper {
     color: red;
   }
@@ -35,9 +40,5 @@ import ThemeIconButton from '../components/ThemeIconButton'
     display: flex;
     justify-content: space-between;
     align-items: center;
-
-    height: 40px;
   }
-
-  
 </style>

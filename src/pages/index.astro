@@ -6,7 +6,7 @@ import MainLayout from "../layouts/MainLayout.astro";
 ---
 
 <BaseLayout>
-  <MainLayout>
+  <MainLayout title="박태준" description="">
     <div data-animate data-animate-speed="slow">
       <div class="introduce-area">
         <div>
@@ -31,15 +31,15 @@ import MainLayout from "../layouts/MainLayout.astro";
 
       <table class="page-area">
         <tr>
-          <th><a class="menu-link external-link" href="/note">수첩</a></th>
+          <th><a class="menu-link internal-link" href="/note">수첩</a></th>
           <td><span class="menu-description">순간적인 생각을 기록하는 나의 수첩</span></td>
         </tr>
         <tr>
-          <th><a class="menu-link external-link" href="">서재</a></th>
+          <th><a class="menu-link internal-link" href="">서재</a></th>
           <td><span class="menu-description">깊이 있는 고민과 통찰의 공간</span></td>
         </tr>
         <tr>
-          <th><a class="menu-link external-link" href="">도구</a></th>
+          <th><a class="menu-link internal-link" href="">도구</a></th>
           <td><span class="menu-description">생산성을 높여주는 나의 도구들을 공유합니다</span></td>
         </tr>
       </table>
@@ -68,6 +68,8 @@ import MainLayout from "../layouts/MainLayout.astro";
 
   .menu-link {
     display: inline-block;
+
+    margin-right: 20px;
   }
   .menu-description {
     font-size: 0.875rem;

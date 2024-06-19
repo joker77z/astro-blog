@@ -52,3 +52,96 @@ All commands are run from the root of the project, from a terminal:
 ## 👀 Want to learn more?
 
 Feel free to check [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
+
+```
+astro-blog
+├─ .git
+│  ├─ COMMIT_EDITMSG
+│  ├─ FETCH_HEAD
+│  ├─ HEAD
+│  ├─ ORIG_HEAD
+│  ├─ config
+│  ├─ description
+│  ├─ hooks
+│  │  ├─ applypatch-msg.sample
+│  │  ├─ commit-msg.sample
+│  │  ├─ fsmonitor-watchman.sample
+│  │  ├─ post-update.sample
+│  │  ├─ pre-applypatch.sample
+│  │  ├─ pre-commit.sample
+│  │  ├─ pre-merge-commit.sample
+│  │  ├─ pre-push.sample
+│  │  ├─ pre-rebase.sample
+│  │  ├─ pre-receive.sample
+│  │  ├─ prepare-commit-msg.sample
+│  │  ├─ push-to-checkout.sample
+│  │  ├─ sendemail-validate.sample
+│  │  └─ update.sample
+│  ├─ index
+│  ├─ info
+│  │  └─ exclude
+│  ├─ logs
+│  │  ├─ HEAD
+│  │  └─ refs
+│  │     ├─ heads
+│  │     │  └─ main
+│  │     └─ remotes
+│  │        └─ origin
+│  │           └─ main
+├─ .gitignore
+├─ .vscode
+│  ├─ extensions.json
+│  └─ launch.json
+├─ README.md
+├─ astro.config.mjs
+├─ package.json
+├─ pnpm-lock.yaml
+├─ public
+│  ├─ favicon.svg
+│  ├─ fonts
+│  │  ├─ Pretendard-Bold.subset.woff2
+│  │  └─ Pretendard-Regular.subset.woff2
+│  └─ link.svg
+├─ src
+│  ├─ assets
+│  │  ├─ Moon.tsx
+│  │  ├─ Sun.tsx
+│  │  └─ external_link.svg
+│  ├─ components
+│  │  ├─ ThemeIconButton.module.css
+│  │  ├─ ThemeIconButton.tsx
+│  │  ├─ icons
+│  │  │  └─ icons.tsx
+│  │  └─ posts
+│  │     ├─ BlogPostLink.astro
+│  │     ├─ NavHeader.astro
+│  │     ├─ PostList.astro
+│  │     └─ PostListHeader.astro
+│  ├─ env.d.ts
+│  ├─ layouts
+│  │  ├─ BaseLayout.astro
+│  │  ├─ Layout.astro
+│  │  ├─ MainLayout.astro
+│  │  ├─ MarkdownPostLayout.astro
+│  │  └─ PostLayout.astro
+│  ├─ pages
+│  │  ├─ index.astro
+│  │  ├─ library
+│  │  │  └─ posts
+│  │  ├─ note
+│  │  │  ├─ index.astro
+│  │  │  └─ posts
+│  │  │     ├─ post-1.md
+│  │  │     ├─ post-2.md
+│  │  │     └─ post-3.md
+│  │  └─ util
+│  │     └─ posts
+│  ├─ style
+│  │  ├─ base.css
+│  │  ├─ fonts.css
+│  │  └─ globalStyle.css
+│  └─ types
+│     └─ post.d.ts
+└─ tsconfig.json
+
+```

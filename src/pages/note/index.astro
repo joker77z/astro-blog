@@ -1,7 +1,6 @@
 ---
 import NavHeader from "../../components/posts/NavHeader.astro";
 import PostList from "../../components/posts/PostList.astro";
-import PostListHeader from "../../components/posts/PostListHeader.astro";
 import BaseLayout from "../../layouts/BaseLayout.astro";
 import MainLayout from "../../layouts/MainLayout.astro";
 
@@ -9,9 +8,8 @@ const allPosts = await Astro.glob("./posts/*.md");
 ---
 
 <BaseLayout>
-  <MainLayout>
-    <NavHeader />
-    <PostListHeader title="수첩" description="작은 생각들이 모여있는 곳" />
+  <NavHeader />
+  <MainLayout title="수첩" description="작은 생각들이 모여있는 곳">
     <PostList allPosts={allPosts} />
   </MainLayout>
 </BaseLayout>
