@@ -38,7 +38,7 @@ body {
   color: var(--text-color);
   background-color: var(--bg-color);
 
-  font-family: "Pretendard", "Arita-buri", "ChosunSm", Arial, Helvetica, sans-serif;
+  font-family: "AritaBuri", "AritaDotum", Arial, Helvetica, sans-serif;
 }
 
 main {
