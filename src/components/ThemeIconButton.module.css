@@ -1,4 +1,8 @@
 .theme-change-btn {
+    position: absolute;
+    top: 0;
+    right: 0;
+
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
