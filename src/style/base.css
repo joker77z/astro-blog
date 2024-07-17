@@ -43,7 +43,7 @@ body {
 
 main {
   max-width: var(--content-width);
-  margin: 128px auto 0;
+  margin: 156px auto 0;
 }
 
 h1 {
@@ -191,7 +191,9 @@ li {
     --delay: 50ms;
     --start: 0ms;
     animation: enter 0.5s both;
-    animation-delay: calc(var(--lv) * var(--delay) + var(--lv-wait) * var(--delay) + var(--start));
+    animation-delay: calc(
+      var(--lv) * var(--delay) + var(--lv-wait) * var(--delay) + var(--start)
+    );
   }
 
   [data-animate-speed="slow"] > * {

@@ -63,6 +63,8 @@ const sortedYears: string[] = Object.keys(postByYear).sort((a, b) => Number(b) -
     transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
     transition-duration: 0.35s;
 
+    margin-top: 36px;
+
     &:hover {
       a {
         opacity: 0.4;
@@ -72,7 +74,7 @@ const sortedYears: string[] = Object.keys(postByYear).sort((a, b) => Number(b) -
 
   .year-wrapper {
     position: relative;
-    border-top: 1px solid gray;
+    border-top: 1px solid var(--gray-800);
 
     &:hover {
       h2::before {

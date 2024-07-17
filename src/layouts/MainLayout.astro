@@ -8,7 +8,7 @@ const { title, description } = Astro.props;
   <div class="title-area">
     <div>
       <h1>{title}</h1>
-      {description && <p>{description}</p> }
+      {description && <p>{description}</p>}
     </div>
 
     <ThemeIconButton client:only="react" />

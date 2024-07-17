@@ -25,7 +25,9 @@ export default function ThemeIconButton() {
 
   useEffect(() => {
     const theme = localStorage.getItem("theme");
-    const isDarkMode = theme === "dark" || (!theme && window.matchMedia("(prefers-color-scheme: dark)").matches);
+    const isDarkMode =
+      theme === "dark" ||
+      (!theme && window.matchMedia("(prefers-color-scheme: dark)").matches);
 
     const $themeChangeBtn = document.querySelector("#themeChangeBtn");
 

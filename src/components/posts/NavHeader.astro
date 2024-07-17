@@ -4,9 +4,21 @@ const currentPath = Astro.url.pathname;
 
 <ul>
   <li><a class="nav-internal-link" href="/">홈</a></li>
-  <li><a class=`nav-internal-link ${currentPath === '/note' ? 'active' : ''}` href="/note">수첩</a></li>
-  <li><a class=`nav-internal-link ${currentPath === '/library' ? 'active' : ''}` href="/library">서재</a></li>
-  <li><a class=`nav-internal-link ${currentPath === '/util' ? 'active' : ''}` href="/util">도구</a></li>
+  <li>
+    <a
+      class=`nav-internal-link ${currentPath === '/note' ? 'active' : ''}`
+      href="/note">수첩</a>
+  </li>
+  <li>
+    <a
+      class=`nav-internal-link ${currentPath === '/library' ? 'active' : ''}`
+      href="/library">서재</a>
+  </li>
+  <li>
+    <a
+      class=`nav-internal-link ${currentPath === '/util' ? 'active' : ''}`
+      href="/util">도구</a>
+  </li>
 </ul>
 
 <style>
@@ -25,20 +37,24 @@ const currentPath = Astro.url.pathname;
   }
 
   .nav-internal-link {
-      position: relative;
-      padding: 0.5rem 0.5rem;
-      border-radius: 0.25rem;
+    position: relative;
+    padding: 0.5rem 0.5rem;
+    border-radius: 0.25rem;
 
-      &:hover {
-          background: var(--gray-700);
+    &:hover {
+      background: var(--gray-700);
 
-          transition: all 0.25s ease-in;
-      }
+      transition: all 0.25s ease-in;
+    }
   }
 
   .active {
-      background: var(--gray-800);
-      border: 1px solid var(--gray-600);
-      color: var(--gray-50);
+    background: var(--gray-800);
+    border: 1px solid var(--gray-600);
+    color: var(--gray-50);
+  }
+
+  a {
+      color:;
   }
 </style>
