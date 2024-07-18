@@ -30,7 +30,7 @@ tags: ["astro", "blogging", "learing in public"]
 
 ---
 
-```js
+```js showLineNumbers {1-2} title="somethingComponent.ts"
 console.log(123);
 console.log(123);
 console.log(123);
