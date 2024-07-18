@@ -2,8 +2,8 @@
 import BaseLayout from "./BaseLayout.astro";
 import MainLayout from "./MainLayout.astro";
 import PostLayout from "./PostLayout.astro";
-import './markdownPostLayout.module.css'
-
+import "./markdownPostLayout.module.css";
+import NavHeader from "../components/posts/NavHeader.astro";
 
 interface Props {
   frontmatter: {
@@ -19,10 +19,10 @@ const { frontmatter } = Astro.props as Props;
 const year = frontmatter.pubDate.toString().slice(0, 4);
 const month = frontmatter.pubDate.toString().slice(5, 7);
 const day = frontmatter.pubDate.toString().slice(8, 10);
-
 ---
 
 <BaseLayout pageTitle={frontmatter.title}>
+  <NavHeader />
   <MainLayout title={frontmatter.title} description={`${year}.${month}.${day}`}>
     <PostLayout>
       <slot />
