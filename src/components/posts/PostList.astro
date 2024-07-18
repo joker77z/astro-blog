@@ -4,20 +4,25 @@ import BlogPostLink from "./BlogPostLink.astro";
 
 const { allPosts } = Astro.props;
 
-const postByYear = allPosts.reduce((acc: Record<string, PostData[]>, post: PostData) => {
-  const currentYear = new Date(post.frontmatter.pubDate).getFullYear().toString();
+const postByYear = allPosts.reduce(
+  (acc: Record<string, PostData[]>, post: PostData) => {
+    const currentYear = new Date(post.frontmatter.pubDate)
+      .getFullYear()
+      .toString();
 
-  if (!acc[currentYear]) {
-    acc[currentYear] = [];
-  }
-  acc[currentYear].push(post);
+    if (!acc[currentYear]) {
+      acc[currentYear] = [];
+    }
+    acc[currentYear].push(post);
 
-  return acc;
-}, {});
+    return acc;
+  },
+  {},
+);
 
-
-const sortedYears: string[] = Object.keys(postByYear).sort((a, b) => Number(b) - Number(a));
-
+const sortedYears: string[] = Object.keys(postByYear).sort(
+  (a, b) => Number(b) - Number(a),
+);
 ---
 
 <section>
@@ -26,19 +31,24 @@ const sortedYears: string[] = Object.keys(postByYear).sort((a, b) => Number(b) -
       <div class="year-wrapper">
         <h2>{year}</h2>
         <ul>
-          {postByYear[year].map((post: PostData) => (
-            <BlogPostLink
-              url={post.url}
-              title={post.frontmatter.title}
-              date={`${String(new Date(post.frontmatter.pubDate).getMonth()).padStart(
-                2,
-                "0"
-              )}.${String(new Date(post.frontmatter.pubDate).getDate())
-                .padStart(2, "0")}`}}
-            >
-              {post.frontmatter.title}
-            </BlogPostLink>
-          ))}
+          {postByYear[year].map((post: PostData) => {
+            const month = String(
+              new Date(post.frontmatter.pubDate).getMonth(),
+            ).padStart(2, "0");
+            const date = String(
+              new Date(post.frontmatter.pubDate).getDate(),
+            ).padStart(2, "0");
+
+            return (
+              <BlogPostLink
+                url={post.url}
+                title={post.frontmatter.title}
+                date={`${month}.${date}`}
+              >
+                {post.frontmatter.title}
+              </BlogPostLink>
+            );
+          })}
         </ul>
       </div>
     ))
@@ -95,7 +105,6 @@ const sortedYears: string[] = Object.keys(postByYear).sort((a, b) => Number(b) -
     font-size: 1rem;
     font-weight: normal;
     margin: 0;
-
 
     color: var(--text-color);
 
