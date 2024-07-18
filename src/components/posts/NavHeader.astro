@@ -1,23 +1,27 @@
 ---
-const currentPath = Astro.url.pathname;
+const path = Astro.url.pathname;
+const currentPath = path.split("/")[1];
 ---
 
 <ul>
   <li><a class="nav-internal-link" href="/">홈</a></li>
   <li>
     <a
-      class=`nav-internal-link ${currentPath === '/note' ? 'active' : ''}`
-      href="/note">수첩</a>
+      class=`nav-internal-link ${currentPath === 'note' ? 'active' : ''}`
+      href="/note">수첩</a
+    >
   </li>
   <li>
     <a
-      class=`nav-internal-link ${currentPath === '/library' ? 'active' : ''}`
-      href="/library">서재</a>
+      class=`nav-internal-link ${currentPath === 'library' ? 'active' : ''}`
+      href="/library">서재</a
+    >
   </li>
   <li>
     <a
-      class=`nav-internal-link ${currentPath === '/util' ? 'active' : ''}`
-      href="/util">도구</a>
+      class=`nav-internal-link ${currentPath === 'util' ? 'active' : ''}`
+      href="/util">도구</a
+    >
   </li>
 </ul>
 
