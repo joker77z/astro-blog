@@ -41,8 +41,6 @@ console.log(123);
 
 <strong>강조</strong>
 
-`특정단어강조`
-
-<mark>wefwef</mark>
+`특정단어강조`랑 이어서 써보는 글
 
 > 인용문구

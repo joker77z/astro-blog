@@ -25,7 +25,7 @@
 
 .dark {
   --heading-color: var(--gray-50);
-  --text-color: var(--gray-300);
+  --text-color: var(--gray-200);
   --bg-color: #141414;
   --b-color: var(--gray-50);
   --external-link-color: var(--gray-50);
