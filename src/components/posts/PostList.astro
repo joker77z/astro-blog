@@ -4,18 +4,6 @@ import BlogPostLink from "./BlogPostLink.astro";
 
 const { allPosts } = Astro.props;
 
-/**
- * 1. reduce로 아래와 같은 구조를 만들자.
- * {
- *  [2024]: [post1, post2],
- *  [2023]: [post3]
- * }
- *
- * 2. 렌더링 할 때
- * 이 객체의 키들을 뽑아서 배열로 만들고
- * 위에서 만든 객체의 post[key].map 이런 식으로 post를 순회한다.
- */
-
 const postByYear = allPosts.reduce((acc: Record<string, PostData[]>, post: PostData) => {
   const currentYear = new Date(post.frontmatter.pubDate).getFullYear().toString();
 
@@ -74,7 +62,9 @@ const sortedYears: string[] = Object.keys(postByYear).sort((a, b) => Number(b) -
 
   .year-wrapper {
     position: relative;
-    border-top: 1px solid var(--gray-800);
+    border-top: 1px solid var(--gray-700);
+
+    padding: 12px 0;
 
     &:hover {
       h2::before {
@@ -96,14 +86,16 @@ const sortedYears: string[] = Object.keys(postByYear).sort((a, b) => Number(b) -
   }
 
   .year-wrapper:last-child {
-    border-bottom: 1px solid gray;
+    border-bottom: 1px solid var(--gray-700);
   }
 
   h2 {
     position: absolute;
+    top: 26px;
     font-size: 1rem;
+    font-weight: normal;
+    margin: 0;
 
-    top: 18px;
 
     color: var(--text-color);
 

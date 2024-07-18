@@ -43,6 +43,7 @@ const currentPath = Astro.url.pathname;
 
     &:hover {
       background: var(--gray-700);
+      color: var(--gray-200);
 
       transition: all 0.25s ease-in;
     }
@@ -52,9 +53,14 @@ const currentPath = Astro.url.pathname;
     background: var(--gray-800);
     border: 1px solid var(--gray-600);
     color: var(--gray-50);
+
+    &:hover {
+      background: var(--gray-800);
+      color: var(--gray-50);
+    }
   }
 
   a {
-      color:;
+    color: var(--gray-600);
   }
 </style>
