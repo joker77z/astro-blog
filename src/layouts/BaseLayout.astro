@@ -1,6 +1,8 @@
 ---
 import { ViewTransitions } from "astro:transitions";
 import "../style/globalStyle.css";
+import Blur from "../components/Blur.astro";
+import ScrollContainer from "../components/ScrollContainer";
 
 const { pageTitle } = Astro.props;
 ---
@@ -37,6 +39,9 @@ const { pageTitle } = Astro.props;
     </script>
   </head>
   <body>
-    <slot />
+    <ScrollContainer client:only="react">
+      <Blur />
+      <slot />
+    </ScrollContainer>
   </body>
 </html>

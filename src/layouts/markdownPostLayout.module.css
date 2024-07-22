@@ -4,7 +4,6 @@
 
 pre {
   padding: 20px;
-  border-radius: 10px;
   background-color: var(--gray-900) !important;
 
   code {
@@ -68,12 +67,12 @@ span[data-highlighted-line] {
 }
 pre > code {
   display: grid;
-  background-color: rgba(200, 200, 255, 0.09);
+  background-color: var(--gray-900);
 }
-code {
+pre > code {
   counter-reset: line;
 }
-code > [data-line]::before {
+pre > code > [data-line]::before {
   counter-increment: line;
   content: counter(line);
 
@@ -87,7 +86,7 @@ code > [data-line]::before {
   margin-left: 6px;
 }
 
-code > [data-highlighted-line]::before {
+pre > code > [data-highlighted-line]::before {
   border-left: 6px solid rgb(87 199 249);
   margin-left: 0;
 }
@@ -106,13 +105,11 @@ code[data-line-numbers-max-digits="3"] > [data-line]::before {
   width: 3rem;
 }
 
-pre > code .line {
-  border-left: 0.5rem solid transparent;
-  padding: 0 0.5rem;
-}
-pre > code .highlighted {
-  background-color: #2e4c35;
-  border-color: #469458;
+p > code {
+  font-family: "AritaBuri", "AritaDotum", Arial, Helvetica, sans-serif;
+  background: var(--gray-800);
+  padding: 4px 6px;
+  border-radius: 6px;
 }
 
 figure {
@@ -131,4 +128,27 @@ figcaption {
 
 pre {
   margin-top: 0;
+}
+
+article ol li {
+  list-style: auto;
+  margin: 8px 0;
+}
+
+article ul li {
+  list-style: square;
+  margin: 8px 0;
+}
+
+blockquote {
+  position: relative;
+  background: var(--gray-800);
+  margin: 0;
+
+  padding: 4px 20px;
+  border-radius: 8px;
+}
+
+ol, ul {
+  padding-inline-start: 40px;
 }

@@ -8,7 +8,13 @@ const prettyCodeOptions = {
 
 // https://astro.build/config
 export default defineConfig({
-  integrations: [react()],
+  integrations: [
+
+    react({
+      experimentalReactChildren: true,
+      include: ['**/react/*'],
+    }),
+  ],
   markdown: {
     syntaxHighlight: false,
     rehypePlugins: [[rehypePrettyCode, prettyCodeOptions]],
