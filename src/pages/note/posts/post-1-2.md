@@ -1,16 +1,16 @@
 ---
 layout: ../../../layouts/MarkdownPostLayout.astro
+title: "나의 첫번째 블로그"
 pubDate: 2022-07-01
-title: "demo"
 description: "my first blog post"
+author: "taejoon park"
+image:
+url: "https://docs.astro.build/assets/full-logo-light.png"
+alt: "The full Astro logo."
 tags: ["astro", "blogging", "learing in public"]
 ---
-이 글은 demo입니다.
-
-최근 프론트엔드 분야에서 React와 Vue에 이어 Svelte가 종종 거론되고 있습니다. 흥미롭게도, 구글 검색에서 ‘React Vue’를 입력하면, 늘 같이 거론되었던 Angular 대신 Svelte가 상단에 추천되는 것을 볼 수 있습니다.
-
 안녕하세요.
-
+ㄴㅇㄹㅇㅈㄹ
 1. 첫 번째 항목입니다.
 2. 두번째입니다.
 
@@ -36,7 +36,7 @@ tags: ["astro", "blogging", "learing in public"]
 
 ---
 
-```js {1-2} title="somethingComponent.ts"
+```js showLineNumbers {1-2} title="somethingComponent.ts"
 console.log(123);
 console.log(123);
 console.log(123);
