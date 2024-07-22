@@ -1,0 +1,15 @@
+---
+import NavHeader from "../../components/posts/NavHeader.astro";
+import PostList from "../../components/posts/PostList.astro";
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import MainLayout from "../../layouts/MainLayout.astro";
+
+const allPosts = await Astro.glob("./posts/*.md");
+---
+
+<BaseLayout>
+  <NavHeader />
+  <MainLayout title="도구" description="생산성을 높여주는 도구">
+    <PostList allPosts={allPosts} />
+  </MainLayout>
+</BaseLayout>
