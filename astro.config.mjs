@@ -9,7 +9,6 @@ const prettyCodeOptions = {
 // https://astro.build/config
 export default defineConfig({
   integrations: [
-
     react({
       experimentalReactChildren: true,
       include: ['**/react/*'],

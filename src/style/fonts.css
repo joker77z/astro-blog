@@ -1,4 +1,32 @@
 @font-face {
+  font-family: 'Pretendard Variable';
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+  src: url('/fonts/PretendardVariable.woff2') format('woff2-variations');
+}
+@font-face {
+  font-family: "Pretendard-Thin";
+  font-weight: 300;
+  font-style: normal;
+  src: url('/fonts/Pretendard-Thin.subset.woff2') format('woff2');
+  font-display: swap;
+}
+@font-face {
+  font-family: "Pretendard-Regular";
+  font-weight: 400;
+  font-style: normal;
+  src: url('/fonts/Pretendard-Regular.subset.woff2') format('woff2');
+  font-display: swap;
+}
+@font-face {
+  font-family: "Pretendard-Medium";
+  font-weight: 500;
+  font-style: normal;
+  src: url('/fonts/Pretendard-Medium.subset.woff2') format('woff2');
+  font-display: swap;
+}
+@font-face {
   font-family: "AritaBuri";
   font-weight: 500;
   font-style: normal;

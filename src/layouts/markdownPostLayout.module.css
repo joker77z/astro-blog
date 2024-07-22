@@ -2,6 +2,12 @@
 /*  color: red;*/
 /*}*/
 
+article {
+  font-family: 'Pretendard Variable', sans-serif;
+  font-size: 16px;
+  line-height: 1.5;
+}
+
 pre {
   padding: 20px;
   background-color: var(--gray-900) !important;
@@ -69,22 +75,22 @@ pre > code {
   display: grid;
   background-color: var(--gray-900);
 }
-pre > code {
-  counter-reset: line;
-}
-pre > code > [data-line]::before {
-  counter-increment: line;
-  content: counter(line);
+/*pre > code {*/
+/*  counter-reset: line;*/
+/*}*/
+/*pre > code > [data-line]::before {*/
+/*  counter-increment: line;*/
+/*  content: counter(line);*/
 
-  /* Other styling */
-  display: inline-block;
-  width: 1rem;
-  margin-right: 2rem;
-  text-align: right;
-  color: gray;
+/*  !* Other styling *!*/
+/*  display: inline-block;*/
+/*  width: 1rem;*/
+/*  margin-right: 2rem;*/
+/*  text-align: right;*/
+/*  color: gray;*/
 
-  margin-left: 6px;
-}
+/*  margin-left: 6px;*/
+/*}*/
 
 pre > code > [data-highlighted-line]::before {
   border-left: 6px solid rgb(87 199 249);
@@ -127,6 +133,7 @@ figcaption {
 }
 
 pre {
+  overflow: auto;
   margin-top: 0;
 }
 
@@ -138,6 +145,7 @@ article ol li {
 article ul li {
   list-style: square;
   margin: 8px 0;
+  line-height: 1.85rem;
 }
 
 blockquote {
@@ -150,5 +158,11 @@ blockquote {
 }
 
 ol, ul {
-  padding-inline-start: 40px;
+  padding-inline-start: 20px;
+}
+
+img {
+  /*object-fit: contain;*/
+  max-width: 100%;
+  height: 100%;
 }
