@@ -34,8 +34,6 @@ thumbnail: '../images/image-20230101171834438.png'
 
 기획이 바뀌기 전 첫 번째로 생각하고 시도한 방법은 이렇다.
 
-![image-20230325202659509](../../../../../joker77z.github.io/contents/images/image-20230325202659509.png)
-
 ```js
 // 공채 사이트
 const loginPopup = window.open('...', '_blank')
