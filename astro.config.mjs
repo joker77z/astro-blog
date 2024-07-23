@@ -1,5 +1,5 @@
 import react from "@astrojs/react";
-import { defineConfig } from "astro/config";
+import {defineConfig, squooshImageService} from "astro/config";
 import rehypePrettyCode from "rehype-pretty-code";
 
 const prettyCodeOptions = {
@@ -17,5 +17,8 @@ export default defineConfig({
   markdown: {
     syntaxHighlight: false,
     rehypePlugins: [[rehypePrettyCode, prettyCodeOptions]],
+  },
+  image: {
+    service: squooshImageService(),
   },
 });
