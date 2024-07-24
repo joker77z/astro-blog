@@ -2,9 +2,11 @@
 layout: ../../../layouts/MarkdownPostLayout.astro
 pubDate: 2023-05-18
 title: '회사에서 chrome extension 제작기#2'
-description: 'Chrome Extension으로 업무 효율성을 올려보자.'
-tags: ["troubleShooting"]
+description: 'chrome extension으로 업무 효율성을 올려보자.'
+tags: ["dev"]
 ---
+
+> 1편에서 특정 Url에서 구동될 환경 구성을 했다. 2편에서는 UI와 세부 로직을 만들어보자.
 
 ## 아이콘을 눌렀을 때 나오는 html 페이지 : popup.html
 
@@ -29,28 +31,7 @@ Chrome Extension 아이콘을 눌렀을 때 나오는 html 페이지를 만들 �
       <h1>Jobflex Extension 2.0.2</h1>
     </div>
 
-    <!--Waves Container-->
-    <!-- <div>
-      <svg
-        class="waves"
-        xmlns="http://www.w3.org/2000/svg"
-        xmlns:xlink="http://www.w3.org/1999/xlink"
-        viewBox="0 24 150 28"
-        preserveAspectRatio="none"
-        shape-rendering="auto"
-      >
-        <defs>
-          <path id="gentle-wave" d="M-160 44c30 0 58-18 88-18s 58 18 88 18 58-18 88-18 58 18 88 18 v44h-352z" />
-        </defs>
-        <g class="parallax">
-          <use xlink:href="#gentle-wave" x="48" y="0" fill="rgba(255,255,255,0.7" />
-          <use xlink:href="#gentle-wave" x="48" y="3" fill="rgba(255,255,255,0.5)" />
-          <use xlink:href="#gentle-wave" x="48" y="5" fill="rgba(255,255,255,0.3)" />
-          <use xlink:href="#gentle-wave" x="48" y="7" fill="#fff" />
-        </g>
-      </svg>
-    </div> -->
-    <!--Waves end-->
+    ...
 
     <section class="section acc">
       <h2 class="section-title">응시자 데이터 추가</h2>
@@ -325,24 +306,10 @@ window.addEventListener('DOMContentLoaded', () => {
 
 
 
-## 최종 결과물
-
-- ver1
-
-
-
-
-- ver2
-
-
-ver.1에서는 기능을 추가할 때마다 세로로 길어지면서 아이콘과 기능 사이 거리가 멀어지는 단점이 있었다. 토글로 한번 ON해놓고 건들이지 않을 수 있는 기능들은 하위에 배치하고 자주 사용하는 기능들은 위에 배치해서 아이콘과의 거리를 줄였다.
-
-
-
 ## 후기
 
 - 현 회사의 경우 보안이 매우 엄격해서 크롬 익스텐션을 만들고 크롬에 로컬로 업로드하는 것조차 쉽지 않았다. 팀장님과 정보보호셀을 설득하면서 진행했는데, 다들 적극적으로 도와주셔서 시작할 수 있었고 적극적인 백엔드 동료가 있어서 크롬 익스텐션 전용 api를 만들 수 있었고 더 성공적으로 초기버전을 만들 수 있었다.
 - 처음엔 크롬익스텐션 아이콘에 ON/OFF 상태를 나타내면서 background.js로 1가지 기능만 동작하게 구현했으나, 지금 베이스를 잡을 때 페이지로 만들어서 앞으로 여러 기능을 추가하기 편하게 해놓으면 좋을 것 같다라는 생각에 크롬익스텐션 페이지를 추가하고 popup.js ↔ contentscript.js 파일로 메시지를 주고 받는 방식을 택했다.
 - 크롬에서 생각보다 굉장히 많은 API들을 지원하고 있다. 앞으로 또 어떤 기능을 추가해 어떤 도움을 줄 수 있을지 신나는 경험이었다.
 - manifest버전이 2에서 3으로 올라감에 따라서 레퍼런스들을 찾기가 어려워졌고.. 2로 개발방향을 바꿔서 개발을 했지만 크롬이 이제는 3이상만 지원하는 것을 깨달았다.
-- 하루동안 가능성을 검토하고, 되겠다 싶어서 1주일간 개발했고 2일동안 리팩토링을 진행하면서 오랜만에 누군가에게 도움이되고 제가 원하는 걸 만들어 본 경험이라 재밌는 시간이었다. 앞으로 계속 유지되면서 여러 사람에게 도움을 줄 수 있는 익스텐션이 되었으면 좋겠다.
+- 하루동안 가능성을 검토하고, 되겠다 싶어서 1주일간 개발했고 2일동안 리팩토링을 진행하면서 오랜만에 누군가에게 도움이되는 걸 만들어 본 경험이라 재밌는 시간이었다. 앞으로 계속 유지되면서 여러 사람에게 도움을 줄 수 있는 익스텐션이 되었으면 좋겠다.
