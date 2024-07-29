@@ -33,7 +33,7 @@ const sortedYears: string[] = Object.keys(postByYear).sort(
         <ul>
           {postByYear[year].map((post: PostData) => {
             const month = String(
-              new Date(post.frontmatter.pubDate).getMonth(),
+              new Date(post.frontmatter.pubDate).getMonth() + 1,
             ).padStart(2, "0");
             const date = String(
               new Date(post.frontmatter.pubDate).getDate(),
