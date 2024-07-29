@@ -1,9 +1,9 @@
 ---
-date: '2023-01-01'
+layout: ../../../layouts/MarkdownPostLayout.astro
+pubDate: 2023-01-01
 title: '2022년 회고록'
-categories: ['Diary']
-summary: '제2의 인생을 살기 시작한 2022년'
-thumbnail: '../images/image-20230101171834438.png'
+description: '2022년에는 어떤 일이 있었을까'
+tags: ["회고"]
 ---
 
 # 마이다스아이티에 프론트엔드 개발자로 취업
