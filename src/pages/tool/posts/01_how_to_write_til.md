@@ -1,9 +1,9 @@
 ---
-date: '2023-01-07'
-title: 'alias를 이용해 마크다운 에디터로 깃헙블로그와 TIL을 편하게 쓰기'
-categories: ['Tip']
-summary: 'CI/CD없이 빠르고 간편하게 내가 원하는 명령어들을 만들어보자.'
-thumbnail: '../images/image-20230101171834438.png'
+layout: ../../../layouts/MarkdownPostLayout.astro
+pubDate: 2023-01-07
+title: 'MacOS CLI > alias를 이용해서 생산성을 올려보자.'
+description: 'alias 사용하기'
+tags: ["MacOS"]
 ---
 
 
