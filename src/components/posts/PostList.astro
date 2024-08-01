@@ -31,7 +31,7 @@ const sortedYears: string[] = Object.keys(postByYear).sort(
       <div class="year-wrapper">
         <h2>{year}</h2>
         <ul>
-          {postByYear[year].map((post: PostData) => {
+          {postByYear[year].reverse().map((post: PostData) => {
             const month = String(
               new Date(post.frontmatter.pubDate).getMonth() + 1,
             ).padStart(2, "0");
