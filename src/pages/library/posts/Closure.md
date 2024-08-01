@@ -176,6 +176,7 @@ let RegistResume = (function() {
   })();
 
   fn = {
+    // 아래 3천 줄 이상 코드와 수십개의 메서드가 있었다.
     init() {
       fn.load();
       fn.event();
