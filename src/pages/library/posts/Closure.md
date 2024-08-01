@@ -48,148 +48,150 @@ tags: ["dev"]
 
 ```js
 let RegistResume = (function() {
-	let fn, keyData, recruitNoticeList = [], targetRecruitNotice = {}, paramData = {}, interval, modalAgreement = { canMoveNextStep: false }, blockEmailData, jfYn, jdYn;
+  let fn, keyData, recruitNoticeList = [], targetRecruitNotice = {}, paramData = {}, interval, modalAgreement = { canMoveNextStep: false }, blockEmailData, jfYn, jdYn;
 
-	keyData = {
-		// 수 많은 키와 값들..
-	};
+  keyData = {
+    // 수 많은 키와 값들..
+  };
 
-	paramData = {
-		// 수 많은 키와 값들..
-	};
+  paramData = {
+    // 수 많은 키와 값들..
+  };
 
-	blockEmailData = ...
+  blockEmailData = ...
 
-	/**
-	 * JF3 계약 공고 시 지원서 작성 창에서 동작해야 할 로직들을 응집도있게 모아놨다.
-	 * @type {{init(number): void, openJobdaLoginPopupAndLoadProfile(): void}}
-	 */
-	const jobdaFn = (() => {
-		let isJobda = false;
-		const urlParmas = new URLSearchParams(window.location.href);
-		const accessToken = urlParmas.get('accessToken');
+  /**
+   * JF3 계약 공고 시 지원서 작성 창에서 동작해야 할 로직들을 응집도있게 모아놨다.
+   * @type {{init(number): void, openJobdaLoginPopupAndLoadProfile(): void}}
+   */
+  const jobdaFn = (() => {
+    let isJobda = false;
+    const urlParmas = new URLSearchParams(window.location.href);
+    const accessToken = urlParmas.get('accessToken');
 
-		const checkJobda = () => {
-			$.ajax({
-				type: 'get', dataType: 'json',
-				url: ...,
-				async : false,
-			}).done(function(contractType, e) {
-				isJobda = contractType === 'JOBDA';
-				jdYn = contractType === 'JOBDA';
-			});
-		}
-		
-		const checkDirectEnter = () => {
-			Common.modal({
-				title : '올바르지 않은 방식의 접근',
-				width : '500',
-				height : '226',
-				btnTitle : '채용사이트 공고로 돌아가기',
-				enabledConfirm : false,
-				enabledCancel : false,
-				enabledCancelConfirm : false,
-				btnEvent() {
-					window.location.href = `${window.location.origin}/app/jobnotice/view?systemKindCode=MRS2&jobnoticeSn=${keyData.jobnoticeSn}`;
-				},
-				content : (function() {
-					let t = [];
-					t.push('<div style="font-size:14px;text-align:center">올바르지 않은 방식으로 접근하여 페이지를 찾을 수 없습니다.<br>정상적인 방법으로 다시 시도해 주세요.</div>');
-					return t.join('');
-				})()
-			});
-			return;
-		}
-
-		const loadJobdaUserProfile = (accessToken, jobnoticeSn) => {
-			const jobdaApiDomain = $('#jobdaApiDomain').val();
-
-			const param = {
-				recruitNoticeSn: jobnoticeSn,
-				accessToken: accessToken,
-			}
-
-			$.ajax({
-				type: 'POST',
-				dataType: 'json',
-				beforeSend: Common.loading.show(),
-				url: `...`,
-				async: false,
-				data: param,
-			}).always(Common.loading.countHide).fail(Common.ajaxOnfail)
-				.done(function(data, e) {
-					const { name, email, mobile = '', certificated: isCertificated } = data;
-
-					// 사용자 정보 DOM에 삽입
-					$('#name').val(name);
-					$('#mobile1').val(mobile?.slice(0, 3));
-					$('#mobile2').val(mobile?.slice(3, 7));
-					$('#mobile3').val(mobile?.slice(7));
-					$('#email').val(email);
-					$('#emailConfirm').val(email);
-					$('#certificated').val(certificated.toString());
-
-					// 사용자 정보 입력되고 나서 이름, 이메일 바로 유효성 검증.
-					fn.checkName();
-					fn.checkEmail();
-					fn.checkConfirmFunc();
-				});
-		}
-
-		return {
-			init() {
-				if (keyData.jobnoticeSn > 0 && keyData.recruitTypeCode !== 'RECOMMEND' && keyData.recruitTypeCode !== 'PRIVATE') {
-					checkJobda();
-				}
-
-				if(isJobda) {
-					// JF3 계약 시 생성된 공고인데 잡다 로그인 없이 url만으로 바로 들어왔을 때 채용사이트 공고로 다시 보낸다.
-					if(!window.opener) {
-						checkDirectEnter();
-					}
-					// 채용사이트를 통해 정상적으로 접근했다면, 잡다 정보를 넣는다.
-					loadJobdaUserProfile(accessToken, keyData.jobnoticeSn);
-				}
-			},
-			// 잡다 로그인 페이지를 열었다가 종료하며, 사용자 정보를 받아오고 input Element에 넣는다.
-			openJobdaLoginPopupAndLoadProfile() {
-				const messageUrl = window.location.href;
-				const jobdaDomain = $('#jobdaDomain').val().trim();
-				const PAGETYPE = 'mypage';
-
-				const jobdaLogin = window.open(...);
-
-				const jobdaLoginMessageFn = (event) => {
-					if(event.origin === jobdaDomain) {
-						if(event.data.isJobdaClose) {
-							jobdaLogin.close();
-						}
-						if(event.data.accessToken) {
-							jobdaLogin.close();
-							loadJobdaUserProfile(event.data.accessToken);
-						}
-					}
-				}
-				window.addEventListener('message', jobdaLoginMessageFn, {once: true});
-			}
-		}
-	})();
-
-	fn = {
-		init() {
-			fn.load();
-			fn.event();
-			fn.privatePassword(); 
-      
-			jobdaFn.init();
-		},
-		load() {
-			...
-      jobdaFn.openJobdaLoginPopupAndLoadProfile();
-		},
-		event() {
-      ...
+    const checkJobda = () => {
+      $.ajax({
+        type: 'get', dataType: 'json',
+        url: ...,
+        async: false,
+      }).done(function(contractType, e) {
+        isJobda = contractType === 'JOBDA';
+        jdYn = contractType === 'JOBDA';
+      });
     }
+
+    const checkDirectEnter = () => {
+      Common.modal({
+        title: '올바르지 않은 방식의 접근',
+        width: '500',
+        height: '226',
+        btnTitle: '채용사이트 공고로 돌아가기',
+        enabledConfirm: false,
+        enabledCancel: false,
+        enabledCancelConfirm: false,
+        btnEvent() {
+          window.location.href = `${window.location.origin}/app/jobnotice/view?systemKindCode=MRS2&jobnoticeSn=${keyData.jobnoticeSn}`;
+        },
+        content: (function() {
+          let t = [];
+          t.push('<div style="font-size:14px;text-align:center">올바르지 않은 방식으로 접근하여 페이지를 찾을 수 없습니다.<br>정상적인 방법으로 다시 시도해 주세요.</div>');
+          return t.join('');
+        })()
+      });
+      return;
+    }
+
+    const loadJobdaUserProfile = (accessToken, jobnoticeSn) => {
+      const jobdaApiDomain = $('#jobdaApiDomain').val();
+
+      const param = {
+        recruitNoticeSn: jobnoticeSn,
+        accessToken: accessToken,
+      }
+
+      $.ajax({
+        type: 'POST',
+        dataType: 'json',
+        beforeSend: Common.loading.show(),
+        url: `...`,
+        async: false,
+        data: param,
+      }).always(Common.loading.countHide).fail(Common.ajaxOnfail)
+        .done(function(data, e) {
+          const { name, email, mobile = '', certificated: isCertificated } = data;
+
+          // 사용자 정보 DOM에 삽입
+          $('#name').val(name);
+          $('#mobile1').val(mobile?.slice(0, 3));
+          $('#mobile2').val(mobile?.slice(3, 7));
+          $('#mobile3').val(mobile?.slice(7));
+          $('#email').val(email);
+          $('#emailConfirm').val(email);
+          $('#certificated').val(certificated.toString());
+
+          // 사용자 정보 입력되고 나서 이름, 이메일 바로 유효성 검증.
+          fn.checkName();
+          fn.checkEmail();
+          fn.checkConfirmFunc();
+        });
+    }
+
+    return {
+      init() {
+        if (keyData.jobnoticeSn > 0 && keyData.recruitTypeCode !== 'RECOMMEND' && keyData.recruitTypeCode !== 'PRIVATE') {
+          checkJobda();
+        }
+
+        if (isJobda) {
+          // JF3 계약 시 생성된 공고인데 잡다 로그인 없이 url만으로 바로 들어왔을 때 채용사이트 공고로 다시 보낸다.
+          if (!window.opener) {
+            checkDirectEnter();
+          }
+          // 채용사이트를 통해 정상적으로 접근했다면, 잡다 정보를 넣는다.
+          loadJobdaUserProfile(accessToken, keyData.jobnoticeSn);
+        }
+      },
+      // 잡다 로그인 페이지를 열었다가 종료하며, 사용자 정보를 받아오고 input Element에 넣는다.
+      openJobdaLoginPopupAndLoadProfile() {
+        const messageUrl = window.location.href;
+        const jobdaDomain = $('#jobdaDomain').val().trim();
+        const PAGETYPE = 'mypage';
+
+        const jobdaLogin = window.open(...);
+
+        const jobdaLoginMessageFn = (event) => {
+          if (event.origin === jobdaDomain) {
+            if (event.data.isJobdaClose) {
+              jobdaLogin.close();
+            }
+            if (event.data.accessToken) {
+              jobdaLogin.close();
+              loadJobdaUserProfile(event.data.accessToken);
+            }
+          }
+        }
+        window.addEventListener('message', jobdaLoginMessageFn, { once: true });
+      }
+    }
+  })();
+
+  fn = {
+    init() {
+      fn.load();
+      fn.event();
+      fn.privatePassword();
+
+      jobdaFn.init();
+    },
+    load() {
+    ...
+      jobdaFn.openJobdaLoginPopupAndLoadProfile();
+    },
+    event() {
+    ...
+    }
+  }
+})();
 ```
 
 
