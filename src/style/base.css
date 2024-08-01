@@ -18,6 +18,7 @@
   --external-link-color: black;
   --external-link-icon-color: black;
   --hover-color: black;
+  --hover-background-color: var(--gray-100);
 
   --border: #292929;
   --content-width: 640px;
@@ -31,6 +32,7 @@
   --external-link-color: var(--gray-50);
   --external-link-icon-color: #ebebeb;
   --hover-color: var(--gray-50);
+  --hover-background-color: var(--gray-800);
 }
 
 body {
@@ -118,7 +120,8 @@ ul {
   border-radius: 0.25rem;
 
   &:hover {
-    background: var(--gray-700);
+    background: var(--hover-background-color);
+    color: inherit;
 
     transition: all 0.25s ease-in;
   }

@@ -6,6 +6,8 @@ article {
   font-family: 'Pretendard Variable', sans-serif;
   font-size: 16px;
   line-height: 1.5;
+
+  padding-bottom: 100px;
 }
 
 pre {
@@ -33,7 +35,7 @@ h3 {
 h1,
 h2,
 h3 {
-  color: var(--gray-100);
+  color: var(--heading-color);
 }
 
 hr {
@@ -113,7 +115,7 @@ code[data-line-numbers-max-digits="3"] > [data-line]::before {
 
 p > code {
   font-family: "AritaBuri", "AritaDotum", Arial, Helvetica, sans-serif;
-  background: var(--gray-800);
+  background: var(--hover-background-color);
   padding: 4px 6px;
   border-radius: 6px;
 }
@@ -150,7 +152,7 @@ article ul li {
 
 blockquote {
   position: relative;
-  background: var(--gray-800);
+  background: var(--hover-background-color);
   margin: 0;
 
   padding: 4px 20px;

@@ -36,7 +36,7 @@ const { url, title, date } = Astro.props;
 
       .title {
         position: relative;
-        color: white;
+        color: var(--text-color);
 
         &::before {
           position: absolute;
@@ -46,7 +46,7 @@ const { url, title, date } = Astro.props;
           right: 0rem;
           display: block;
           content: "";
-          border-radius: 0.25rem;
+          border-radius: 0.15rem;
           background: #ffffff45;
           opacity: 0.5;
 
@@ -57,7 +57,7 @@ const { url, title, date } = Astro.props;
 
       .date {
         position: relative;
-        color: white;
+        color: var(--text-color);
 
         &::before {
           position: absolute;
