@@ -168,3 +168,19 @@ img {
   max-width: 100%;
   height: 100%;
 }
+
+table {
+  border-collapse: collapse;
+}
+
+table, th, td {
+  border: 1px solid var(--b-color);
+}
+
+th {
+  background: var(--hover-background-color);
+}
+
+th, td {
+  padding: 8px;
+}
