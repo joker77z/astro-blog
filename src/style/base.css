@@ -13,10 +13,11 @@
   /* white mode */
   --heading-color: black;
   --text-color: black;
+  --code-color: var(--gray-200);
   --bg-color: var(--gray-50);
   --b-color: black;
   --external-link-color: black;
-  --external-link-icon-color: black;
+  --external-link-icon-color: rgb(62, 47, 47);
   --hover-color: black;
   --hover-background-color: var(--gray-100);
 
@@ -27,6 +28,7 @@
 .dark {
   --heading-color: var(--gray-50);
   --text-color: var(--gray-200);
+  --code-color: var(--gray-200);
   --bg-color: #141414;
   --b-color: var(--gray-50);
   --external-link-color: var(--gray-50);

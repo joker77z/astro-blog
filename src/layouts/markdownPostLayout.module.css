@@ -3,7 +3,7 @@
 /*}*/
 
 article {
-  font-family: 'Pretendard Variable', sans-serif;
+  font-family: "Pretendard Variable", sans-serif;
   font-size: 16px;
   line-height: 1.5;
 
@@ -17,6 +17,7 @@ pre {
   code {
     padding: 0;
     background: none;
+    color: var(--code-color);
   }
 }
 
@@ -159,7 +160,8 @@ blockquote {
   border-radius: 8px;
 }
 
-ol, ul {
+ol,
+ul {
   padding-inline-start: 20px;
 }
 
@@ -173,7 +175,9 @@ table {
   border-collapse: collapse;
 }
 
-table, th, td {
+table,
+th,
+td {
   border: 1px solid var(--b-color);
 }
 
@@ -181,6 +185,7 @@ th {
   background: var(--hover-background-color);
 }
 
-th, td {
+th,
+td {
   padding: 8px;
 }
