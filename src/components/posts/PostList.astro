@@ -4,25 +4,35 @@ import BlogPostLink from "./BlogPostLink.astro";
 
 const { allPosts } = Astro.props;
 
-const postByYear = allPosts.reduce(
-  (acc: Record<string, PostData[]>, post: PostData) => {
-    const currentYear = new Date(post.frontmatter.pubDate)
-      .getFullYear()
-      .toString();
+const binarySearchInsert = (arr: PostData[], post: PostData) => {
+  let left = 0;
+  let right = arr.length;
 
-    if (!acc[currentYear]) {
-      acc[currentYear] = [];
+  while (left < right) {
+    const mid = Math.floor((left + right) / 2);
+    if (new Date(arr[mid].frontmatter.pubDate) > new Date(post.frontmatter.pubDate)) {
+      right = mid;
+    } else {
+      left = mid + 1;
     }
-    acc[currentYear].push(post);
+  }
 
-    return acc;
-  },
-  {},
-);
+  return [...arr.slice(0, left), post, ...arr.slice(left)];
+};
 
-const sortedYears: string[] = Object.keys(postByYear).sort(
-  (a, b) => Number(b) - Number(a),
-);
+const postByYear = allPosts.reduce((acc: Record<string, PostData[]>, post: PostData) => {
+  const currentYear = new Date(post.frontmatter.pubDate).getFullYear().toString();
+
+  if (!acc[currentYear]) {
+    acc[currentYear] = [];
+  }
+
+  acc[currentYear] = binarySearchInsert(acc[currentYear], post);
+
+  return acc;
+}, {});
+
+const sortedYears: string[] = Object.keys(postByYear).sort((a, b) => Number(b) - Number(a));
 ---
 
 <section>
@@ -32,19 +42,11 @@ const sortedYears: string[] = Object.keys(postByYear).sort(
         <h2>{year}</h2>
         <ul>
           {postByYear[year].reverse().map((post: PostData) => {
-            const month = String(
-              new Date(post.frontmatter.pubDate).getMonth() + 1,
-            ).padStart(2, "0");
-            const date = String(
-              new Date(post.frontmatter.pubDate).getDate(),
-            ).padStart(2, "0");
+            const month = String(new Date(post.frontmatter.pubDate).getMonth() + 1).padStart(2, "0");
+            const date = String(new Date(post.frontmatter.pubDate).getDate()).padStart(2, "0");
 
             return (
-              <BlogPostLink
-                url={post.url}
-                title={post.frontmatter.title}
-                date={`${month}.${date}`}
-              >
+              <BlogPostLink url={post.url} title={post.frontmatter.title} date={`${month}.${date}`}>
                 {post.frontmatter.title}
               </BlogPostLink>
             );
