@@ -115,7 +115,8 @@ code[data-line-numbers-max-digits="3"] > [data-line]::before {
 }
 
 p > code {
-  font-family: "AritaBuri", "AritaDotum", Arial, Helvetica, sans-serif;
+  font-family: "Pretendard Variable", sans-serif;
+  font-weight: bold;
   background: var(--hover-background-color);
   padding: 4px 6px;
   border-radius: 6px;
