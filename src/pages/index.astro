@@ -1,5 +1,5 @@
 ---
-import { Github } from "../components/icons/icons";
+import { Email, Github, Linkedin } from "../components/icons/icons";
 
 import BaseLayout from "../layouts/BaseLayout.astro";
 import MainLayout from "../layouts/MainLayout.astro";
@@ -29,8 +29,24 @@ import MainLayout from "../layouts/MainLayout.astro";
         </div>
         <ul class="icon-list">
           <li>
-            <a class="icon-link" href="https://www.github.com/joker77z"
-              ><Github /></a
+            <a
+              class="icon-link"
+              href="mailto:joker77z@naver.com"
+              aria-label="email"><Email /></a
+            >
+          </li>
+          <li>
+            <a
+              class="icon-link"
+              href="https://www.github.com/joker77z"
+              aria-label="github"><Github /></a
+            >
+          </li>
+          <li>
+            <a
+              class="icon-link"
+              href="https://www.linkedin.com/in/%ED%83%9C%EC%A4%80-%EB%B0%95-642557230/"
+              aria-label="linkedin"><Linkedin /></a
             >
           </li>
         </ul>
@@ -92,17 +108,15 @@ import MainLayout from "../layouts/MainLayout.astro";
   .icon-list {
     display: flex;
     flex-flow: row;
-    gap: 8px;
+    gap: 4px;
   }
   .icon-link {
     display: flex;
     justify-content: center;
     align-items: center;
 
-    padding: 0.125rem;
-
-    width: 20px;
-    height: 20px;
+    width: 32px;
+    height: 32px;
 
     color: var(--gray-500);
 
@@ -115,13 +129,7 @@ import MainLayout from "../layouts/MainLayout.astro";
     }
   }
 
-  th {
-    display: flex;
-    justify-content: right;
-    align-items: center;
-    height: 1.5rem;
-  }
-  td {
-    height: 1.5rem;
+  tr {
+    height: 2rem;
   }
 </style>
