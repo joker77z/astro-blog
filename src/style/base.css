@@ -11,10 +11,13 @@
   --gray-900: #1b1b1b;
 
   /* white mode */
+  --contrast-color: black;
+  --contrast-bg-color: hsla(0, 0%, 0%, .045);
+
   --heading-color: black;
   --text-color: black;
   --code-color: var(--gray-200);
-  --bg-color: var(--gray-50);
+  --bg-color: white;
   --b-color: black;
   --external-link-color: black;
   --external-link-icon-color: rgb(62, 47, 47);
@@ -26,6 +29,9 @@
 }
 
 .dark {
+  --contrast-color: white;
+  --contrast-bg-color: var(--gray-700);
+
   --heading-color: var(--gray-50);
   --text-color: var(--gray-200);
   --code-color: var(--gray-200);

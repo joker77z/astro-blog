@@ -10,7 +10,10 @@ const binarySearchInsert = (arr: PostData[], post: PostData) => {
 
   while (left < right) {
     const mid = Math.floor((left + right) / 2);
-    if (new Date(arr[mid].frontmatter.pubDate) > new Date(post.frontmatter.pubDate)) {
+    if (
+      new Date(arr[mid].frontmatter.pubDate) >
+      new Date(post.frontmatter.pubDate)
+    ) {
       right = mid;
     } else {
       left = mid + 1;
@@ -20,33 +23,48 @@ const binarySearchInsert = (arr: PostData[], post: PostData) => {
   return [...arr.slice(0, left), post, ...arr.slice(left)];
 };
 
-const postByYear = allPosts.reduce((acc: Record<string, PostData[]>, post: PostData) => {
-  const currentYear = new Date(post.frontmatter.pubDate).getFullYear().toString();
+const postByYear = allPosts.reduce(
+  (acc: Record<string, PostData[]>, post: PostData) => {
+    const currentYear = new Date(post.frontmatter.pubDate)
+      .getFullYear()
+      .toString();
 
-  if (!acc[currentYear]) {
-    acc[currentYear] = [];
-  }
+    if (!acc[currentYear]) {
+      acc[currentYear] = [];
+    }
 
-  acc[currentYear] = binarySearchInsert(acc[currentYear], post);
+    acc[currentYear] = binarySearchInsert(acc[currentYear], post);
 
-  return acc;
-}, {});
+    return acc;
+  },
+  {},
+);
 
-const sortedYears: string[] = Object.keys(postByYear).sort((a, b) => Number(b) - Number(a));
+const sortedYears: string[] = Object.keys(postByYear).sort(
+  (a, b) => Number(b) - Number(a),
+);
 ---
 
 <section>
   {
     sortedYears.map((year) => (
       <div class="year-wrapper">
-        <h2>{year}</h2>
+        <span class="year">{year}</span>
         <ul>
           {postByYear[year].reverse().map((post: PostData) => {
-            const month = String(new Date(post.frontmatter.pubDate).getMonth() + 1).padStart(2, "0");
-            const date = String(new Date(post.frontmatter.pubDate).getDate()).padStart(2, "0");
+            const month = String(
+              new Date(post.frontmatter.pubDate).getMonth() + 1,
+            ).padStart(2, "0");
+            const date = String(
+              new Date(post.frontmatter.pubDate).getDate(),
+            ).padStart(2, "0");
 
             return (
-              <BlogPostLink url={post.url} title={post.frontmatter.title} date={`${month}.${date}`}>
+              <BlogPostLink
+                url={post.url}
+                title={post.frontmatter.title}
+                date={`${month}.${date}`}
+              >
                 {post.frontmatter.title}
               </BlogPostLink>
             );
@@ -79,20 +97,20 @@ const sortedYears: string[] = Object.keys(postByYear).sort((a, b) => Number(b) -
     padding: 20px 0;
 
     &:hover {
-      h2::before {
-        position: absolute;
-        top: -0.125rem;
-        bottom: -0.125rem;
-        left: -0.125rem;
-        right: 0rem;
-        display: block;
-        content: "";
-        border-radius: 0.25rem;
-        background: #ffffff45;
-        opacity: 0.5;
-
-        animation-name: fadein;
-        animation-duration: 0.15s;
+      .year {
+        color: var(--contrast-color);
+        &::before {
+          z-index: -1;
+          display: block;
+          content: "";
+          background-color: var(--contrast-bg-color);
+          position: absolute;
+          top: -0.4rem;
+          left: -0.4rem;
+          right: -0.4rem;
+          bottom: -0.4rem;
+          border-radius: 0.4rem;
+        }
       }
     }
   }
@@ -101,16 +119,19 @@ const sortedYears: string[] = Object.keys(postByYear).sort((a, b) => Number(b) -
     border-bottom: 1px solid var(--gray-700);
   }
 
-  h2 {
+  .year {
     position: absolute;
     top: 31px;
     font-size: 1rem;
     font-weight: normal;
     margin: 0;
-
     color: var(--text-color);
-
-    z-index: -10;
+    &::before {
+      display: block;
+      content: "";
+      background-color: transparent;
+      transition: background-color 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
   }
 
   ul {
