@@ -52,7 +52,8 @@ body {
 }
 
 main {
-  max-width: var(--content-width);
+  width: var(--content-width);
+  max-width: 90%;
   margin: 156px auto 0;
 }
 
