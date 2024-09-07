@@ -154,10 +154,11 @@ article ul li {
 blockquote {
   position: relative;
   background: var(--hover-background-color);
-  margin: 0;
+  margin: 10px 0 0 0;
 
   padding: 4px 20px;
   border-radius: 8px;
+
 }
 
 ol,
