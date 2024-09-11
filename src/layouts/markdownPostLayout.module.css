@@ -26,11 +26,18 @@ h1 {
 }
 
 h2 {
-  margin-top: 100px;
+  margin-top: 160px;
+}
+
+h2::after {
+  content: "";
+  display: block;
+  padding-top: 8px;
+  border-bottom: 1px solid var(--gray-700);
 }
 
 h3 {
-  margin-top: 60px;
+  margin-top: 100px;
 }
 
 h1,
@@ -114,7 +121,8 @@ code[data-line-numbers-max-digits="3"] > [data-line]::before {
   width: 3rem;
 }
 
-p > code {
+p > code,
+li > code {
   font-family: "Pretendard Variable", sans-serif;
   font-weight: bold;
   background: var(--hover-background-color);
@@ -159,7 +167,6 @@ blockquote {
 
   padding: 4px 20px;
   border-radius: 8px;
-
 }
 
 ol,

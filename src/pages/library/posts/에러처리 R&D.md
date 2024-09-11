@@ -128,25 +128,27 @@ axios.interceptors.response.use(_, onResponseRejected);
 
 function onResponseRejected(error: Error) {
   return new Promise((_, reject) => {
-    if(isNetworkError(error)) {
-	    setTimeout(() => handleNetworkError(error, reject), 200);
-	    return;
+    if (isNetworkError(error)) {
+      setTimeout(() => handleNetworkError(error, reject), 200);
+      return;
     }
-    if(isAxiosTimeoutError(error)) {
-	    return handleTimeoutError(error, reject);
+    if (isAxiosTimeoutError(error)) {
+      return handleTimeoutError(error, reject);
     }
 
-    const errCode = error.reponse?.data?.errorCode;
+    const errorCode = error.response?.data?.errorCode;
     const status = error.response?.status;
 
-    if(errorCode) {
-	    switch (errorCode) {
-		    case ERROR_CODE_계정이상:
-			    return handleKitckOutError(error);
-		    /* .. */
-	    }
+    if (errorCode) {
+      switch (errorCode) {
+        case ERROR_CODE_계정이상:
+          return handleKitckOutError(error);
+        /* .. */
+      }
     }
-  })
+
+    reject(error); // 에러를 reject 해야 합니다.
+  });
 }
 ```
 
@@ -182,50 +184,54 @@ ErrorBoundary도 2개로 분리했는데, Fontend에서 발생하는 Error와 ap
 
 ```jsx
 export const Layout = () => {
-	return (
-		<RootErrorBoundary> <-- Frontend 에서 발생하는 에러 처리
-			<ApiErrorBoundary> <-- api에서 발생하는 에러 처리
-				<Outlet />
-			</ApiErrorBoundary>
-		</RootErrorBoundary>
-	)
-}
+  return (
+    <RootErrorBoundary>
+      {" "}
+      {/* Frontend에서 발생하는 에러 처리 */}
+      <ApiErrorBoundary>
+        {" "}
+        {/* API에서 발생하는 에러 처리 */}
+        <Outlet />
+      </ApiErrorBoundary>
+    </RootErrorBoundary>
+  );
+};
 ```
 
 ```jsx
 export const ApiErrorBoundary = ({children}) => {
-	const reset = ... // tanstack-query의 query reset hook
-	const { key } = useLocation();
+  const reset = ... // tanstack-query의 query reset hook
+  const { key } = useLocation();
 
-	return (
-		<ErrorBoundary
-			fallback={ApiFallbackComponent}
-			onReset={reset}
-			key={key}
-		>
-			{children}
-		</ErrorBoundary>
-	)
+  return (
+    <ErrorBoundary
+      fallback={ApiFallbackComponent}
+      onReset={reset}
+      key={key}
+    >
+      {children}
+    </ErrorBoundary>
+  );
 }
 ```
 
 ```jsx
 function ApiFallbackComponent = ({error, resetErrorBoundary}) => {
   // sentry같은 에러 모니터링 서비스에 데이터 전송 가능
-	useEffect(() => {
-		captureApiError(props.error);
-	}, []);
+  useEffect(() => {
+    captureApiError(props.error);
+  }, []);
 
-	if(!isAxiosError(error)) {
-		throw error; // axios error가 아닐 경우 상위로 throw 합니다.
-	}
+  if(!isAxiosError(error)) {
+    throw error; // axios error가 아닐 경우 상위로 throw 합니다.
+  }
 
-	// 500에러나 기타 일반 Api Error
-	return (
-		<CommonErrorHandler
-			resetErrorBoundary={resetErrorBoundary}
-		 />
-	)
+  // 500에러나 기타 일반 Api Error
+  return (
+    <CommonErrorHandler
+      resetErrorBoundary={resetErrorBoundary}
+    />
+  )
 }
 ```
 
