@@ -6,22 +6,16 @@ const currentPath = path.split("/")[1];
 <ul>
   <li><a class="nav-internal-link" href="/">홈</a></li>
   <li>
-    <a
-      class=`nav-internal-link ${currentPath === 'note' ? 'active' : ''}`
-      href="/note">수첩</a
-    >
+    <a class=`nav-internal-link ${currentPath === 'note' ? 'active' : ''}` href="/note">수첩</a>
   </li>
   <li>
-    <a
-      class=`nav-internal-link ${currentPath === 'library' ? 'active' : ''}`
-      href="/library">서재</a
-    >
+    <a class=`nav-internal-link ${currentPath === 'library' ? 'active' : ''}` href="/library">서재</a>
   </li>
   <li>
-    <a
-      class=`nav-internal-link ${currentPath === 'tool' ? 'active' : ''}`
-      href="/tool">도구</a
-    >
+    <a class=`nav-internal-link ${currentPath === 'learn' ? 'active' : ''}` href="/learn">학교</a>
+  </li>
+  <li>
+    <a class=`nav-internal-link ${currentPath === 'tool' ? 'active' : ''}` href="/tool">도구</a>
   </li>
 </ul>
 
