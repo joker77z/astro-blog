@@ -131,15 +131,46 @@ pages 하위에 404.tsx 파일을 만들어주면 된다. 간단하다.
 
 ## 네비게이팅
 
+### 1. useRouter이용하기
+
 Next.js에서는 Link컴포넌트를 활용해서 클라이언트 사이드 렌더링을 구현할 수 있다. 일반적인 a태그와는 동작이 다르다. 프로그래매틱하게 이동(Link버튼 클릭이 아니라 어떤 조건을 만족했을 때 페이지 이동)하기 위해서는 next/router에 있는 useRouter에서 push메서드를 이용할 수 있다.
 
 ```tsx
 const router = useRouter();
   
-  const handleClickButton = () => {
-    router.push("/test");
-  };
+const handleClickButton = () => {
+  router.push("/test");
+};
 ```
+
+하지만, 이 경우에는 프리패칭이 일어나지 않는다. 만약 프리패칭을 원한다면 아래와 같이 할 수 있다.
+
+```js
+const router = useRouter();
+  
+const handleClickButton = () => {
+  router.push("/test");
+};
+
+useEffect(() => {
+  router.prefetch("/test");
+}, [])
+```
+
+이제는 test.js 파일을 미리 프리패칭하는 것을 볼 수 있다.
+
+
+
+### 2. Link태그 이용하기
+
+```jsx
+<Link href={"/"}>index</Link>
+<Link href={"/search"} prefetch={false}>search</Link> // prefetch를 원하지 않을 경우.
+```
+
+
+
+
 
 
 
@@ -168,3 +199,10 @@ const router = useRouter();
 하지만 dev모드에서는 프리패칭이 일어 나지 않는다. 따라서 링크를 클릭할 때마다 js bundle파일을 받아오는 것을 볼 수 있다.
 
 ![image-20240916234405787](../images/image-20240916234405787.png)
+
+production 모드에서는 프리패칭을 확인할 수 있다. 링크를 클릭하기 전에 search.js 파일을 미리 받아온 모습을 확인할 수 있다.
+
+> 이제 search 페이지로 이동했을 때 search.js 를 받아오지 않는 것이 정상이지만, 간혹 search.js를 받아오는 경우는 캐시가 만료된 경우다.
+
+
+
