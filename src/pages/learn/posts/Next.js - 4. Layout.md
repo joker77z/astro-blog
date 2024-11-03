@@ -1,7 +1,7 @@
 ---
 layout: ../../../layouts/MarkdownPostLayout.astro
 pubDate: 2024-10-26
-title: 'Next.js - Pages Router #4 Layout'
+title: '[Next.js][Pages Router] 4. Layout'
 description: 'Layout'
 tags: ["Next.js"]
 

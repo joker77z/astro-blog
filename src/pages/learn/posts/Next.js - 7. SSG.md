@@ -1,7 +1,7 @@
 ---
 layout: ../../../layouts/MarkdownPostLayout.astro
 pubDate: 2024-11-02
-title: 'Next.js - Pages Router #7 SSG'
+title: '[Next.js][Pages Router] 7. SSG'
 description: 'App Router'
 tags: ["Next.js"]
 ---

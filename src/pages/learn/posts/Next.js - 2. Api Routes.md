@@ -1,7 +1,7 @@
 ---
 layout: ../../../layouts/MarkdownPostLayout.astro
 pubDate: 2024-09-16
-title: 'Next.js - Pages Router #2 Api routes'
+title: '[Next.js][Pages Router] 2. Api routes'
 description: 'App Router'
 tags: ["Next.js"]
 
