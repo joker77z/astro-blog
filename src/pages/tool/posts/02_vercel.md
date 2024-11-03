@@ -8,7 +8,7 @@ tags: ["Vercel"]
 
 
 
-## Automatic 배포
+## 자동 배포
 
 레포에 소스를 Push만 하면 Vercel에서 바로 배포까지 자동으로 해주는 방법입니다.
 
@@ -25,3 +25,15 @@ tags: ["Vercel"]
 
 
 > 주의 : 만약, 연결시킨 레포 루트에 package.json이 없다면 Settings > General > Root Directory 에서 package.json이 있는 폴더 위치로 변경해주면 됩니다.
+
+
+
+## 수동 배포
+
+IDE에서 개발하다가 CLI상으로 배포도 가능합니다.
+
+1. vercel 글로벌 설치 : `npm i -g vercel`
+2. vercel 로그인 : `vercel login`
+3. vercel 실행 : `vercel`
+4. 순차적으로 각 명령을 진행하면 현재 프로젝트를 추가할 수 있습니다.
+5. vercel 배포 : `vercel --prod`
