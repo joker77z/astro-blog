@@ -1,7 +1,7 @@
 ---
 layout: ../../../layouts/MarkdownPostLayout.astro
 pubDate: 2024-11-09
-title: '[Next.js] Data Fetching'
+title: '[Next.js][App Router] Data Fetching'
 description: 'Data Fetching'
 tags: ["Next.js"]
 
